@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="degree_arrays">
+        <item>Associate of Arts</item>
+        <item>Associate of Science</item>
+        <item>Associate of Applied Science</item>
+        <item>Associate of Engineering</item>
+        <item>Associate of Applied Arts</item>
+        <item>Associate of Political Science</item>
+        <item>Bachelor of Arts</item>
+        <item>Bachelor of Science</item>
+        <item>Bachelor of Fine Arts</item>
+        <item>Bachelor of Business Administration</item>
+        <item>Bachelor of Architecture</item>
+        <item>Master of Arts</item>
+        <item>Master of Fine Arts</item>
+        <item>Master of Science</item>
+        <item>Master of Research</item>
+        <item>Master of Philosophy</item>
+        <item>Master of Laws</item>
+        <item>Master of Business Administration</item>
+        <item>Doctor of Philosophy</item>
+        <item>Doctor of Medicine</item>
+        <item>Doctor of Education</item>
+        <item>Juris Doctor</item>
+    </string-array>
+
+</resources>

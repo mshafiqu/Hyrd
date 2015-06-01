@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context="com.hyrd.hyrd.continue_employee_create">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#ff3468af">
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Skills"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="25sp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next →"
+            android:id="@+id/profileContinueEmp"
+            android:textColor="#FFFFFF"
+            android:textSize= "18sp"
+            android:background="@drawable/button_login"
+            android:onClick="clickNext"
+            android:layout_alignBottom="@+id/button"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/button"
+        android:layout_marginTop="70dp"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:weightSum="1"
+            android:id="@+id/layoutEmp">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:hint="Enter Skill"
+                android:textColorHint="@color/hintColor"
+                android:textColor="@color/white"
+                android:id="@+id/firstSkill"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Select a value between 0 and 100 to represent your knowledge of this skill."
+                android:textColor="@color/white"
+                android:id="@+id/firstSkillInstruction"/>
+            <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                android:id="@+id/discrete1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:dsb_min="0"
+                app:dsb_max="100"
+                app:dsb_value="0"
+                app:dsb_progressColor="@color/gold"
+                app:dsb_indicatorColor="@color/gold"
+                />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Another Skill"
+                android:id="@+id/newSkillButton"
+                android:background="@drawable/button_login"
+                android:textColor="@color/white"
+                android:onClick="newSkill"
+                android:layout_marginTop="5dp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="loginGeneral">#ffe64c65</color>
+    <color name="loginPressed">#ffcc324b</color>
+    <color name="spinnerGeneral">#ff50597b</color>
+    <color name="spinnerPressed">#ff1a4e95</color>
+    <color name="backgroundMain">#ff394264</color>
+    <color name="homeGeneral">#ff394264</color>
+    <color name="homePressed">#ff50597b</color>
+    <color name="addPositionGeneral">#00000000</color>
+    <color name="addPositionPressed">#ff50597b</color>
+    <color name="white">#ffffff</color>
+    <color name="hintColor">#9099b7</color>
+    <color name="gold">#fcb150</color>
+    <color name="highlight">#f3f3f3</color>
+    <color name="textbox">#ff50597b</color>
+    <color name="turqoise">#ff11a8ab</color>
+    <color name="babyblue">#ff4fc4f6</color>
+</resources>

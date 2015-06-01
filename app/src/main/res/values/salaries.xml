@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="salary_prompt">Desired Salary Range</string>
+
+    <string-array name="salary_arrays">
+        <item>35-50k</item>
+        <item>50-65k</item>
+        <item>65-80k</item>
+        <item>80-100k</item>
+        <item>100-120k</item>
+        <item>120k+</item>
+    </string-array>
+
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

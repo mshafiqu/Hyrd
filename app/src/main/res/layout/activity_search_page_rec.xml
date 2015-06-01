@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain"
+    tools:context="com.hyrd.hyrd.search_page_rec">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#ff3468af">
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="25sp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="80dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/gold"
+            android:text="Enter top three skills in order of preference."
+            android:textSize="14sp"/>
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Skill"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/white"
+            android:id="@+id/autoCompleteSkills"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/skillsLayout">
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Position"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Experience"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter City or Zip Code"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Salary Range"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Department"
+            android:textColorHint="@color/hintColor"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Find me matches!"
+            android:layout_marginTop="20dp"
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_login"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:inputType="text|textCapWords"
+            android:id="@+id/searchButton"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

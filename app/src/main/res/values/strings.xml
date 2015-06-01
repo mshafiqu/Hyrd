@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Hyrd</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_new_user">NewUser</string>
+    <string name="title_activity_new_recruiter">new_recruiter</string>
+    <string name="title_activity_new_employee">new_employee</string>
+    <string name="title_activity_continue_employee_create">continue_employee_create</string>
+    <string name="title_activity_upload_profile_pic">upload_profile_pic</string>
+    <string name="title_activity_add_experience">add_experience</string>
+    <string name="title_activity_add_education">add_education</string>
+    <string name="title_activity_forgot_password">forgot_password</string>
+    <string name="title_activity_home_page_emp">home_page_emp</string>
+    <string name="title_activity_search_page_rec">search_page_rec</string>
+    <string name="title_activity_saved_searches_rec">saved_searches_rec</string>
+    <string name="title_activity_starred_recruits">starred_recruits</string>
+    <string name="title_activity_profile_view">profile_view</string>
+</resources>

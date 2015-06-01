@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/backgroundMain</item>
+        <item name="colorPrimaryDark">@color/hintColor</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style tools:ignore="NewApi" name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="cropImageStyle">@style/Widget.CropImageView</item>
+    </style>
+
+    <style name="Widget.CropImageView" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="showThirds">true</item>
+        <item name="showCircle">false</item>
+        <item name="showHandles">always</item>
+        <item name="highlightColor">@color/highlight</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+</resources>

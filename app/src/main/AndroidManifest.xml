@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hyrd.hyrd" >
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".new_recruiter"
+            android:label="@string/title_activity_new_recruiter" >
+        </activity>
+        <activity
+            android:name=".new_employee"
+            android:label="@string/title_activity_new_employee" >
+        </activity>
+        <activity
+            android:name=".continue_employee_create"
+            android:label="@string/title_activity_continue_employee_create" >
+        </activity>
+        <activity
+            android:name=".upload_profile_pic"
+            android:label="@string/title_activity_upload_profile_pic"
+            android:theme="@style/CustomTheme" >
+        </activity>
+        <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:label="@string/title_activity_upload_profile_pic"
+            android:theme="@style/CustomTheme" >
+        </activity>
+        <activity
+            android:name=".add_experience"
+            android:label="@string/title_activity_add_experience" >
+        </activity>
+        <activity
+            android:name=".add_education"
+            android:label="@string/title_activity_add_education" >
+        </activity>
+        <activity
+            android:name=".forgot_password"
+            android:label="@string/title_activity_forgot_password" >
+        </activity>
+        <activity
+            android:name=".home_page_rec"
+            android:label="@string/title_activity_home_page_emp" >
+        </activity>
+        <activity
+            android:name=".search_page_rec"
+            android:label="@string/title_activity_search_page_rec" >
+        </activity>
+        <activity
+            android:name=".saved_searches_rec"
+            android:label="@string/title_activity_saved_searches_rec" >
+        </activity>
+        <activity
+            android:name=".starred_recruits"
+            android:label="@string/title_activity_starred_recruits" >
+        </activity>
+        <activity
+            android:name=".profile_view"
+            android:label="@string/title_activity_profile_view" >
+        </activity>
+    </application>
+
+</manifest>
