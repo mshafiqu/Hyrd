@@ -91,29 +91,23 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"/>
 
-            <EditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
-                android:hint="Select Department(s)"
+                android:hint="Select Department"
                 android:ems="10"
                 android:id="@+id/selectedDepartmentEmp"
                 android:textColorHint="@color/hintColor"
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.07" />
-
-            <Button
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select Department(s)"
-                android:id="@+id/departmentButtonEmp"
-                android:textColor="#FFFFFF"
-                android:textSize= "18sp"
-                android:background="@drawable/button_login"
-                android:layout_marginTop="10dp"
-                android:onClick="clickSelectDepartment" />
-
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/departmentEmpLayout">
+            </LinearLayout>
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

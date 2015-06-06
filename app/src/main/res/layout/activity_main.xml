@@ -9,7 +9,7 @@
     tools:context=".MainActivity"
     android:background="@color/backgroundMain"
     android:id="@+id/R"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+    >
 
     <!--<TextView
         android:layout_width="320dp"

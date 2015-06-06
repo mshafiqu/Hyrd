@@ -18,6 +18,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String TABLE_EMPLOYEE = "employee";
     public static final String TABLE_SKILLS = "skills";
 
+    //Common Columns
     public static final String COLUMN_EMP_ID = "emp_id";
 
     //Employee Table Columns
@@ -43,8 +44,8 @@ public class DBHandler extends SQLiteOpenHelper {
             COLUMN_SALARY + " VARCHAR(255)" + ")";
 
     private static final String CREATE_SKILLS_TABLE = "CREATE TABLE " +
-            TABLE_EMPLOYEE + "(" +
-            COLUMN_EMP_ID + " INTEGER PRIMARY KEY," +
+            TABLE_SKILLS + "(" +
+            COLUMN_EMP_ID + " INTEGER," +
             COLUMN_SKILL_NAME + " VARCHAR(255)," +
             COLUMN_SKILL_VALUE + " INTEGER" + ")";
 
@@ -164,32 +165,81 @@ public class DBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public long addSkill(Skills skill, long[] emp_ids) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void addSkill(Skills skill) {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_SKILL_NAME, skill.getSkillName());
         values.put(COLUMN_SKILL_VALUE, skill.getSkillValue());
 
-        long skill_id = db.insert(TABLE_SKILLS, null, values);
-
-        for (long emp_id : emp_ids) {
-            assignSkillToEmp(skill_id, emp_id);
-        }
-
-        return skill_id;
-    }
-
-    public long assignSkillToEmp(long skill_id, long emp_id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        db.insert(TABLE_SKILLS, null, values);
+        db.close();
+    }
+
+    public List<Skills> getAllSkills() {
+        List<Skills> skills = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_SKILLS;
+
+        Log.e("DBQuery", selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Skills skill = new Skills();
+                skill.setID(c.getInt(c.getColumnIndex(COLUMN_EMP_ID)));
+                skill.setSkillName(c.getString(c.getColumnIndex(COLUMN_SKILL_NAME)));
+                skill.setSkillValue((c.getInt(c.getColumnIndex(COLUMN_SKILL_VALUE))));
+
+                // adding to todo list
+                skills.add(skill);
+            } while (c.moveToNext());
+        }
+
+        return skills;
+    }
+
+    public List<Skills> getAllSkillsForEmployee(int id) {
+        List<Skills> skills = new ArrayList<>();
+        String selectQuery = "SELECT s." + COLUMN_SKILL_NAME + ", s." + COLUMN_SKILL_VALUE + " FROM "
+                + TABLE_SKILLS + " s WHERE " + "s." + COLUMN_EMP_ID + " = "
+                + id;
+
+        Log.e("DBQuery", selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Skills skill = new Skills();
+                //skill.setID(c.getInt(c.getColumnIndex(COLUMN_EMP_ID)));
+                skill.setSkillName(c.getString(c.getColumnIndex(COLUMN_SKILL_NAME)));
+                skill.setSkillValue((c.getInt(c.getColumnIndex(COLUMN_SKILL_VALUE))));
+
+                // adding to todo list
+                skills.add(skill);
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return skills;
+    }
+
+    public void addSkillForEmployee(Employee employee, Skills skill) {
+
         ContentValues values = new ContentValues();
-        values.put(KEY_TODO_ID, todo_id);
-        values.put(KEY_TAG_ID, tag_id);
-        values.put(KEY_CREATED_AT, getDateTime());
+        values.put(COLUMN_EMP_ID, employee.getID());
+        values.put(COLUMN_SKILL_NAME, skill.getSkillName());
+        values.put(COLUMN_SKILL_VALUE, skill.getSkillValue());
 
-        long id = db.insert(TABLE_TODO_TAG, null, values);
+        SQLiteDatabase db = this.getWritableDatabase();
 
-        return id;
+        db.insert(TABLE_SKILLS, null, values);
+        db.close();
     }
 }

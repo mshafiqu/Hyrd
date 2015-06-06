@@ -41,6 +41,7 @@ public class add_education extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_add_education);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -150,7 +151,7 @@ public class add_education extends ActionBarActivity {
             }
         });
 
-        Button addButton = new Button(this);
+        final Button addButton = new Button(this);
         addButton.setText("+ Add Another High School");
         addButton.setTextColor(getResources().getColor(R.color.white));
         addButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
@@ -163,6 +164,7 @@ public class add_education extends ActionBarActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addButton.setVisibility(View.GONE);
                 addHighSchool(v);
             }
         });
@@ -278,7 +280,7 @@ public class add_education extends ActionBarActivity {
             }
         });
 
-        Button addButton = new Button(this);
+        final Button addButton = new Button(this);
         addButton.setText("+ Add Another College");
         addButton.setTextColor(getResources().getColor(R.color.white));
         addButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
@@ -291,6 +293,7 @@ public class add_education extends ActionBarActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addButton.setVisibility(View.GONE);
                 addCollege(v);
             }
         });
@@ -428,7 +431,7 @@ public class add_education extends ActionBarActivity {
             }
         });
 
-        Button addButton = new Button(this);
+        final Button addButton = new Button(this);
         addButton.setText("+ Add Another Certification");
         addButton.setTextColor(getResources().getColor(R.color.white));
         addButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
@@ -441,6 +444,7 @@ public class add_education extends ActionBarActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addButton.setVisibility(View.GONE);
                 addCertification(v);
             }
         });

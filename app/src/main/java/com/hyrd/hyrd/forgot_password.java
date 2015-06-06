@@ -13,6 +13,7 @@ public class forgot_password extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_forgot_password);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

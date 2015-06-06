@@ -12,6 +12,7 @@
 
     <style tools:ignore="NewApi" name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="cropImageStyle">@style/Widget.CropImageView</item>
+        <item name="android:typeface">monospace</item>
     </style>
 
     <style name="Widget.CropImageView" parent="Theme.AppCompat.Light.NoActionBar">
@@ -19,6 +20,5 @@
         <item name="showCircle">false</item>
         <item name="showHandles">always</item>
         <item name="highlightColor">@color/highlight</item>
-        <item name="android:typeface">monospace</item>
     </style>
 </resources>

@@ -8,28 +8,40 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
 public class new_employee extends ActionBarActivity {
+
+    private AutoCompleteTextView autoCompleteTextView;
+    private int count = 1;
+    private ArrayList<String> selectedDepartment = new ArrayList<>();
     private ArrayList<String> selectedItems=new ArrayList<>();
     EditText firstNameNewEmp;
     EditText lastNameNewEmp;
     EditText phoneEmp;
     EditText emailNewEmp;
     EditText selectedDepartmentEmp;
+    EditText passwordNewEmp;
     String salaryString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_new_employee);
 
         EditText password = (EditText) findViewById(R.id.passwordNewEmp);
@@ -46,6 +58,76 @@ public class new_employee extends ActionBarActivity {
             }
         });
         getSupportActionBar().setTitle(null);
+
+        String[] departments_array = getResources().getStringArray(R.array.departments_arrays);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.selectedDepartmentEmp);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,departments_array);
+        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setThreshold(1);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
+                if (count > 1) {
+                    Log.e("AutoCompleteTextView", "More than 1 item selected");
+                } else {
+                    count++;
+                    String selection = (String) parent.getItemAtPosition(position);
+                    addDepartmentTextView(selection);
+                }
+            }
+        });
+    }
+
+    public void addDepartmentTextView(final String selection) {
+        View linearLayout =  findViewById(R.id.departmentEmpLayout);
+        LinearLayout.LayoutParams params = new TableLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1f);
+
+        final TextView newTV = new TextView(this);
+        newTV.setText(selection);
+        newTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        newTV.setTextColor(getResources().getColor(R.color.white));
+        newTV.setGravity(Gravity.CENTER);
+        newTV.setBackground(getResources().getDrawable(R.drawable.skills_button));
+        newTV.setLayoutParams(params);
+
+        autoCompleteTextView.setText("");
+        selectedDepartment.add(selection);
+
+        ((LinearLayout) linearLayout).addView(newTV);
+
+        newTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(new_employee.this);
+                builder.setMessage("Are you sure you want to delete this department?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                newTV.setVisibility(View.GONE);
+                                autoCompleteTextView.setEnabled(true);
+                                selectedDepartment.remove(selection);
+                                count--;
+                                dialog.cancel();
+                            }
+                        });
+                builder.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder.create();
+                alert11.show();
+            }
+        });
+        if (count > 1) {
+            autoCompleteTextView.setEnabled(false);
+        }
     }
 
     @Override
@@ -57,44 +139,6 @@ public class new_employee extends ActionBarActivity {
         phoneEmp = (EditText) findViewById(R.id.phoneEmp);
         emailNewEmp = (EditText) findViewById(R.id.emailNewEmp);
         selectedDepartmentEmp = (EditText) findViewById(R.id.selectedDepartmentEmp);
-    }
-
-    public void clickSelectDepartment(View v) {
-        final CharSequence[] items = {"Software Engineering","Computer Engineering","Marketing","Information Technology"};
-        final EditText selectedDepartmentEmp = (EditText) findViewById(R.id.selectedDepartmentEmp);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Department(s)");
-        builder.setMultiChoiceItems(items, null,
-                new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which,
-                                        boolean isChecked) {
-                        if (isChecked) {
-                            // If the user checked the item, add it to the selected items
-                            selectedItems.add(items[which].toString());
-                        } else if (selectedItems.contains(items[which].toString())) {
-                            // Else, if the item is already in the array, remove it
-                            selectedItems.remove(items[which].toString());
-                        }
-                    }
-                })
-                // Set the action buttons
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        String selectedDepartments = selectedItems.toString();
-                        selectedDepartmentEmp.setText(selectedDepartments.substring(1, selectedDepartments.length()-1));
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (selectedItems.isEmpty()) {
-                            selectedDepartmentEmp.setText("Department(s)");
-                        }
-                    }
-                });
-        builder.show();
     }
 
     public void addListenerOnSpinnerItemSelection() {
@@ -122,14 +166,15 @@ public class new_employee extends ActionBarActivity {
         String last_name = lastNameNewEmp.getText().toString();
         String phone_number = phoneEmp.getText().toString();
         String emp_email = emailNewEmp.getText().toString();
+        String emp_password = passwordNewEmp.getText().toString();
         String emp_department = selectedDepartmentEmp.getText().toString();
         String salary = salaryString;
 
-        Employee employee = new Employee(first_name, last_name, phone_number, emp_email, emp_department, salary);
+        Employee employee = new Employee(first_name, last_name, phone_number, emp_email, emp_password, emp_department, salary);
 
         dbHandler.addEmployee(employee);
 
-        Intent continueEmp = new Intent(new_employee.this, continue_employee_create.class);
+        Intent continueEmp = new Intent(new_employee.this, add_skill.class);
         startActivity(continueEmp);
     }
 

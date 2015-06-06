@@ -18,6 +18,7 @@ public class saved_searches_rec extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_saved_searches_rec);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

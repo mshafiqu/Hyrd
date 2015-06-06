@@ -65,22 +65,18 @@ public class add_experience extends ActionBarActivity {
 
         /*mStartDateDisplay = (TextView) findViewById(R.id.startDate);
         mPickStartDate = (Button) findViewById(R.id.startDateButton);
-
         mEndDateDisplay = (TextView) findViewById(R.id.endDate);
         mPickEndDate = (Button) findViewById(R.id.endDateButton);
-
         mPickStartDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(DATE_START_DIALOG_ID);
             }
         });
-
         mPickEndDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(DATE_END_DIALOG_ID);
             }
         });
-
         // get the current date
         final Calendar c = Calendar.getInstance();
         mStartYear = c.get(Calendar.YEAR);
@@ -89,7 +85,6 @@ public class add_experience extends ActionBarActivity {
         mEndYear = c.get(Calendar.YEAR);
         mEndMonth = c.get(Calendar.MONTH);
         mEndDay = c.get(Calendar.DAY_OF_MONTH);
-
         // display the current date
         updateStartDisplay(mStartDateDisplay);
         updateEndDisplay(mEndDateDisplay);*/
@@ -296,7 +291,6 @@ public class add_experience extends ActionBarActivity {
                         .append(MONTHS[mStartMonth]).append("-")
                         .append(mStartYear).append(" "));
     }
-
     private void updateEndDisplay(TextView endDateTV) {
         endDateTV.setText(
                 new StringBuilder()
@@ -304,7 +298,6 @@ public class add_experience extends ActionBarActivity {
                         .append(MONTHS[mEndMonth]).append("-")
                         .append(mEndYear).append(" "));
     }
-
     private DatePickerDialog.OnDateSetListener mStartDateSetListener =
             new DatePickerDialog.OnDateSetListener() {
                 public void onDateSet(DatePicker view, int year,
@@ -315,7 +308,6 @@ public class add_experience extends ActionBarActivity {
                     updateStartDisplay(mStartDateDisplay);
                 }
             };
-
     private DatePickerDialog.OnDateSetListener mEndDateSetListener =
             new DatePickerDialog.OnDateSetListener() {
                 public void onDateSet(DatePicker view, int year,

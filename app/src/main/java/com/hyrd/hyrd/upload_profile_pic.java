@@ -26,6 +26,7 @@ public class upload_profile_pic extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_upload_profile_pic);
         resultView = (ImageView) findViewById(R.id.result_image);
 

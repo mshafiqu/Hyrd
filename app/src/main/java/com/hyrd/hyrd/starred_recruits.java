@@ -18,6 +18,7 @@ public class starred_recruits extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_starred_recruits);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -29,6 +29,7 @@ public class search_page_rec extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/Ubuntu-R.ttf");
         setContentView(R.layout.activity_search_page_rec);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
