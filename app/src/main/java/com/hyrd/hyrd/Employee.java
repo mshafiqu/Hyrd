@@ -1,9 +1,12 @@
 package com.hyrd.hyrd;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by AlyanShafique on 5/31/15.
  */
-public class Employee {
+public class Employee implements Parcelable {
     private int emp_id;
     private String first_name;
     private String last_name;
@@ -101,4 +104,45 @@ public class Employee {
     public String getSalary() {
         return this.salary;
     }
+
+    protected Employee(Parcel in) {
+        emp_id = in.readInt();
+        first_name = in.readString();
+        last_name = in.readString();
+        phone_number = in.readString();
+        email = in.readString();
+        password = in.readString();
+        department = in.readString();
+        salary = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(emp_id);
+        dest.writeString(first_name);
+        dest.writeString(last_name);
+        dest.writeString(phone_number);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(department);
+        dest.writeString(salary);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Employee> CREATOR = new Parcelable.Creator<Employee>() {
+        @Override
+        public Employee createFromParcel(Parcel in) {
+            return new Employee(in);
+        }
+
+        @Override
+        public Employee[] newArray(int size) {
+            return new Employee[size];
+        }
+    };
 }

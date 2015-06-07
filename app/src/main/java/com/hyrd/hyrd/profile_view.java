@@ -92,6 +92,7 @@ public class profile_view extends ActionBarActivity {
             Log.d("Last Name:", employee.getLastName());
             Log.d("Phone Number:", employee.getPhoneNumber());
             Log.d("Email:", employee.getEmail());
+            Log.d("Password:", employee.getPassword());
             Log.d("Department:", employee.getDepartment());
             Log.d("Salary:", employee.getSalary());
             for (Skills skill : allSkillsForEmployee) {
@@ -144,6 +145,7 @@ public class profile_view extends ActionBarActivity {
             Log.d("Last Name:", employee.getLastName());
             Log.d("Phone Number:", employee.getPhoneNumber());
             Log.d("Email:", employee.getEmail());
+            Log.d("Password:", employee.getPassword());
             Log.d("Department:", employee.getDepartment());
             Log.d("Salary:", employee.getSalary());
         }

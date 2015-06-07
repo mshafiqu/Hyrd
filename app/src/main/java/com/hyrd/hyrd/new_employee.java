@@ -29,13 +29,12 @@ public class new_employee extends ActionBarActivity {
     private AutoCompleteTextView autoCompleteTextView;
     private int count = 1;
     private ArrayList<String> selectedDepartment = new ArrayList<>();
-    private ArrayList<String> selectedItems=new ArrayList<>();
     EditText firstNameNewEmp;
     EditText lastNameNewEmp;
     EditText phoneEmp;
     EditText emailNewEmp;
-    EditText selectedDepartmentEmp;
     EditText passwordNewEmp;
+    String selection;
     String salaryString;
 
     @Override
@@ -71,11 +70,22 @@ public class new_employee extends ActionBarActivity {
                     Log.e("AutoCompleteTextView", "More than 1 item selected");
                 } else {
                     count++;
-                    String selection = (String) parent.getItemAtPosition(position);
+                    selection = (String) parent.getItemAtPosition(position);
                     addDepartmentTextView(selection);
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        firstNameNewEmp = (EditText) findViewById(R.id.firstNameNewEmp);
+        lastNameNewEmp = (EditText) findViewById(R.id.lastNameNewEmp);
+        phoneEmp = (EditText) findViewById(R.id.phoneEmp);
+        emailNewEmp = (EditText) findViewById(R.id.emailNewEmp);
+        passwordNewEmp = (EditText) findViewById(R.id.passwordNewEmp);
     }
 
     public void addDepartmentTextView(final String selection) {
@@ -130,17 +140,6 @@ public class new_employee extends ActionBarActivity {
         }
     }
 
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-        firstNameNewEmp = (EditText) findViewById(R.id.firstNameNewEmp);
-        lastNameNewEmp = (EditText) findViewById(R.id.lastNameNewEmp);
-        phoneEmp = (EditText) findViewById(R.id.phoneEmp);
-        emailNewEmp = (EditText) findViewById(R.id.emailNewEmp);
-        selectedDepartmentEmp = (EditText) findViewById(R.id.selectedDepartmentEmp);
-    }
-
     public void addListenerOnSpinnerItemSelection() {
         Spinner salary = (Spinner) findViewById(R.id.salarySpinner);
         ArrayAdapter<CharSequence> salaryAdapter = ArrayAdapter.createFromResource(
@@ -167,14 +166,14 @@ public class new_employee extends ActionBarActivity {
         String phone_number = phoneEmp.getText().toString();
         String emp_email = emailNewEmp.getText().toString();
         String emp_password = passwordNewEmp.getText().toString();
-        String emp_department = selectedDepartmentEmp.getText().toString();
+        String emp_department = selection;
         String salary = salaryString;
 
         Employee employee = new Employee(first_name, last_name, phone_number, emp_email, emp_password, emp_department, salary);
-
         dbHandler.addEmployee(employee);
 
         Intent continueEmp = new Intent(new_employee.this, add_skill.class);
+        continueEmp.putExtra("EMPLOYEE", employee);
         startActivity(continueEmp);
     }
 
